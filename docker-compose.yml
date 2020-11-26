@@ -1,0 +1,21 @@
+version: '3'
+services:
+  web:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    ports:
+      - '3000:3000'
+    volumes:
+      # This is saying to we don't want to map the node modules folder
+      - /app/node_modules
+      # The creates a dependency link
+      - .:/app
+  tests:
+    build:
+      context: .
+      dockerfile: Dockerfile.dev
+    volumes:
+      - app/node_modules
+      - .:/app
+    command: ['npm', 'run', 'test']
