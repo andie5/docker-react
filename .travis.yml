@@ -9,7 +9,7 @@ services:
 
 before_install:
   # Docker build and use current context i.e. .
-  Use tag to refer to container later without id. using "-t"
+  # Use tag to refer to container later without id. using "-t"
   - docker build -t andie5/docker-react -f Dockerfile.dev .
 
 script:
