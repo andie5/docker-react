@@ -1,0 +1,16 @@
+# Need sudo permissions for using docker and execute build
+sudo: required
+
+services:
+  # Install docker into running container - need docker cli installed
+  - docker
+
+# Series of stps before deplying and running project
+
+before_install:
+  # Docker build and use current context i.e. .
+  Use tag to refer to container later without id. using "-t"
+  - docker build -t andie5/docker-react -f Dockerfile.dev .
+
+script:
+  - docker run -e CI=true andie5/docker-react npm run test -- --coverage
